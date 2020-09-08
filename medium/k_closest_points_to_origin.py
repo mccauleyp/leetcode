@@ -38,6 +38,13 @@ Note:
 class Solution:
     import heapq, math
     def kClosest(self, points: List[List[int]], K: int) -> List[List[int]]:
+        heap = [(math.sqrt(point[0]**2 + point[1]**2), point) for point in points]
+        heapq.heapify(heap)
+        return [heapq.heappop(heap)[1] for k in range(K)]
+'''
+class Solution:
+    import heapq, math
+    def kClosest(self, points: List[List[int]], K: int) -> List[List[int]]:
         heap = []
         for point in points:
             dist = math.sqrt(point[0]**2 + point[1]**2)
